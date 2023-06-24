@@ -3,7 +3,7 @@ const app = express();
 
 app.get("/", (req, res) => {
   let prodData = {
-    pName: "Jackets",
+    pName: "Shirts",
     price: 45,
     img: "shop-1.jpg",
   };
