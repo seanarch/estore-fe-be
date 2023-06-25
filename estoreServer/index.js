@@ -1,14 +1,24 @@
 const express = require("express");
 const app = express();
+const mysql = require("mysql");
+
+const pool = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "111aaaAAA!",
+  database: "estore",
+  port: 3306,
+  multipleStatements: true,
+});
 
 app.get("/", (req, res) => {
-  let prodData = {
-    pName: "Shirts",
-    price: 45,
-    img: "shop-1.jpg",
-  };
-
-  res.status(200).send(prodData);
+  pool.getConnection((err, connection) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send("Connection Established.");
+    }
+  });
 });
 
 const PORT = 5001;
