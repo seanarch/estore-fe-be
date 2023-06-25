@@ -17,11 +17,13 @@ const CatNav = () => {
     <div className="cat-nav-container container">
       <ul>
         {categories.map((category) => {
-          return (
-            <li key={category.category} className="list-items">
-              <a href="#">{category.category}</a>
-            </li>
-          );
+          if (category.parent_category_id === null) {
+            return (
+              <li key={category.category} className="list-items">
+                <a href="#">{category.category}</a>
+              </li>
+            );
+          }
         })}
       </ul>
     </div>
