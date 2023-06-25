@@ -1,11 +1,11 @@
 const express = require("express");
-const productCategories = require("./Routes/productCategories");
+const product = require("./Routes/product");
 const app = express();
 const cors = require("cors");
 
 app.use(cors());
 
-app.use("/productCategories", productCategories);
+app.use("/", product);
 
 const PORT = 5001;
 
