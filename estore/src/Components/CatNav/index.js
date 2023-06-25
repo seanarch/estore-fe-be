@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./_cat-nav.scss";
 import { useDispatch, useSelector } from "react-redux";
-import categorySlice from "../../Redux/Category/categorySlice";
 import { getCategories } from "../../Redux/Category/actions";
 
 const CatNav = () => {
@@ -19,8 +18,8 @@ const CatNav = () => {
       <ul>
         {categories.map((category) => {
           return (
-            <li key={category} className="list-items">
-              <a href="#">{category}</a>
+            <li key={category.category} className="list-items">
+              <a href="#">{category.category}</a>
             </li>
           );
         })}
