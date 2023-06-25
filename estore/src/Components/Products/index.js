@@ -1,7 +1,7 @@
 import React from "react";
 import "./_products.scss";
 import { useSelector } from "react-redux";
-import productSlice from "../store/slices/productSlice";
+import productSlice from "../../Redux/Product/productSlice";
 
 const Products = () => {
   const productData = useSelector(productSlice.getInitialState);

@@ -1,7 +1,7 @@
 import React from "react";
 import "./_side-nav.scss";
 import { useSelector } from "react-redux";
-import accordionSlice from "../store/slices/accordionCatSlice";
+import accordionSlice from "../../Redux/Accordion/accordionSlice";
 
 const SideNav = () => {
   const accordionData = useSelector(accordionSlice.getInitialState);

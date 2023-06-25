@@ -1,5 +1,5 @@
 const express = require("express");
-const productCategories = express();
+const productCategories = express.Router();
 const mysql = require("mysql");
 
 const pool = mysql.createPool({
