@@ -1,18 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./_side-nav.scss";
 import { useDispatch, useSelector } from "react-redux";
 import accordionSlice from "../../Redux/Accordion/accordionSlice";
 import { getCategories } from "../../Redux/Category/actions";
+import { filterProducts } from "../../Redux/Product/productSlice";
 
 const SideNav = () => {
   const accordionData = useSelector(
     (state) => state.categoryReducer.categories
   );
+  const fetchedProductData = useSelector((state) => state.pr);
+  const [products, setProducts] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
   }, []);
+
+  useEffect(() => {
+    setProducts(fetchedProductData.products);
+  }, [fetchedProductData.status]);
+
+  const filterData = (selectedCategory) => {
+    const payload = { selectedCategory, products };
+    dispatch(filterProducts(payload));
+  };
 
   return (
     <div className="side-nav">
@@ -49,7 +61,12 @@ const SideNav = () => {
                         ) {
                           return (
                             <li className="sub-items">
-                              <a href="#">{subCategory.category}</a>
+                              <a
+                                href="#"
+                                onClick={() => filterData(subCategory)}
+                              >
+                                {subCategory.category}
+                              </a>
                             </li>
                           );
                         }
