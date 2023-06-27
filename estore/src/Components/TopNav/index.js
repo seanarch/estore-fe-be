@@ -1,7 +1,9 @@
 import React from "react";
 import "./_top-nav.scss";
+import { useSelector } from "react-redux";
 
 const TopNav = () => {
+  const cartItemCount = useSelector((state) => state.cr.totalItems);
   return (
     <div>
       <div className="header bg-dark">
@@ -39,6 +41,11 @@ const TopNav = () => {
               </li>
               <li className="list-icon">
                 <i className="fa fa-shopping-cart"></i>
+                {cartItemCount ? (
+                  <div id="cart-item-count">
+                    <p>{cartItemCount}</p>
+                  </div>
+                ) : null}
               </li>
             </ul>
           </div>
