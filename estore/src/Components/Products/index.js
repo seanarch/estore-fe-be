@@ -6,11 +6,14 @@ import { getProducts } from "../../Redux/Product/productAction";
 
 const Products = () => {
   const productData = useSelector((state) => state.pr.products);
+  const cart = useSelector((state) => state.cr);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+
+  console.log(cart);
 
   return (
     <div className="products-container">
