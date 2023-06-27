@@ -3,6 +3,7 @@ import "./_products.scss";
 import { useDispatch, useSelector } from "react-redux";
 import productSlice from "../../Redux/Product/productSlice";
 import { getProducts } from "../../Redux/Product/productAction";
+import { addCartItem } from "../../Redux/Cart/cartSlice";
 
 const Products = () => {
   const productData = useSelector((state) => state.pr.products);
@@ -12,6 +13,10 @@ const Products = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+
+  const addToCart = (itemData) => {
+    dispatch(addCartItem(itemData));
+  };
 
   console.log(cart);
 
@@ -38,7 +43,7 @@ const Products = () => {
                 <i className="fa fa-star" />
               </div>
             </div>
-            <div className="my-3">
+            <div className="my-3" onClick={() => addToCart(product)}>
               <div className="cart-button">
                 <div className="cart-icon-container">
                   <i className="fa fa-shopping-cart mx-4" />
