@@ -4,6 +4,7 @@ import CatNav from "./Components/CatNav";
 import MainComponent from "./Components/MainComponent";
 import { Route, Routes } from "react-router-dom";
 import LandingPage from "./Components";
+import ProductDetails from "./Components/ProductDetails";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <CatNav />
       <Routes>
         <Route path="/" Component={LandingPage} />
+        <Route path="/productDetails" Component={ProductDetails} />
       </Routes>
     </div>
   );
