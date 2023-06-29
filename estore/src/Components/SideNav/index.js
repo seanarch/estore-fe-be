@@ -12,6 +12,8 @@ const SideNav = () => {
   const fetchedProductData = useSelector((state) => state.pr);
   const [products, setProducts] = useState();
   const dispatch = useDispatch();
+  const [minPriceLimit, setMinPriceLimit] = useState(10);
+  const [maxPriceLimit, setMaxPriceLimit] = useState(130);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -31,7 +33,7 @@ const SideNav = () => {
       <div className="section-title">
         <h3>Category</h3>
       </div>
-      <div className="accordion">
+      <div className="accordion my-3">
         {accordionData.map((accordionCategory, key) => {
           if (accordionCategory.parent_category_id === null) {
             return (
@@ -78,6 +80,34 @@ const SideNav = () => {
             );
           }
         })}
+      </div>
+
+      <div></div>
+      <div className="price-filter-container">
+        <div className="section-title">
+          <h3>Filter By Price</h3>
+        </div>
+        <div>
+          <label htmlFor="">Min : {minPriceLimit}</label>
+          <input
+            type="range"
+            className="form-range"
+            min={10}
+            max={130}
+            step={10}
+          />
+        </div>
+        <div>
+          <label htmlFor="">Max : {maxPriceLimit}</label>
+          <input
+            type="range"
+            className="form-range"
+            min={10}
+            max={130}
+            step={10}
+          />
+        </div>
+        <button className="btn btn-outline-dark my-3">Apply Filter</button>
       </div>
     </div>
   );
