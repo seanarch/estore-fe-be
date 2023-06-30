@@ -41,7 +41,7 @@ const FilledCart = () => {
                           <div className="btn btn-outline-dark">
                             <span> - </span>
                           </div>
-                          <div className="btn"> 0 </div>
+                          <div className="btn"> {item.quantity} </div>
                           <div className="btn btn-outline-dark">
                             <span> + </span>
                           </div>

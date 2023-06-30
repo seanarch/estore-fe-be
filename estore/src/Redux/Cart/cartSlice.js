@@ -15,13 +15,13 @@ const cartSlice = createSlice({
       let item_exists = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
-      state.cartItems = [...state.cartItems, action.payload];
-      state.totalQuantity = ++state.totalQuantity;
-      state.totalItemsPrice = state.totalItemsPrice + action.payload.price;
-
       if (!item_exists) {
+        state.cartItems = [...state.cartItems, action.payload];
+        state.totalQuantity = ++state.totalQuantity;
+        state.totalItemsPrice = state.totalItemsPrice + action.payload.price;
         state.totalItems = ++state.totalItems;
       }
+      console.log(state.cartItems);
     },
   },
 });
