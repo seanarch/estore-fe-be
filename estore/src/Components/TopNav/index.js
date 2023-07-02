@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./_top-nav.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
 
 const TopNav = () => {
   const cartItemCount = useSelector((state) => state.cr.totalItems);
+  const [userDetails, setUserDetails] = useState();
+
+  const successHandler = (res) => {
+    setUserDetails(res.profileObj);
+    console.log(userDetails.name);
+  };
+
   return (
     <div>
       <div className="header bg-dark">
@@ -29,10 +37,17 @@ const TopNav = () => {
           <div className="login-container p-0">
             <i className="fa fa-user-circle user-icon" />
             <h5>
-              <GoogleLogin
-                clientId="1054942627751-squdpe3iac5s7t1l55sljivs94fudh4o.apps.googleusercontent.com"
-                buttonText="Login"
-              />
+              {console.log(userDetails)}
+              {userDetails === "" ? (
+                <GoogleLogin
+                  clientId="1054942627751-squdpe3iac5s7t1l55sljivs94fudh4o.apps.googleusercontent.com"
+                  buttonText="Login"
+                  cookiePolicy="single_host_origin"
+                  onSuccess={successHandler}
+                />
+              ) : (
+                <div>test</div>
+              )}
             </h5>
           </div>
           <div className="cart-wishlist">
